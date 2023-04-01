@@ -89,4 +89,5 @@ const numberToText = n => {
   })
   return final
 }
-console.log(numberToText('54123165911213421553264373562694'))
+
+module.exports = numberToText
