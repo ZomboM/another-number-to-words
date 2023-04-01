@@ -1,5 +1,5 @@
 {
-  "name": "number-to-text",
+  "name": "another-number-to-words",
   "version": "1.0.0",
   "description": "converts a number to text",
   "main": "index.js",
