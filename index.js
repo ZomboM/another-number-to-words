@@ -73,7 +73,7 @@ const threeDigitsToText = (digits, useAnd) => {
   const twoDigits = twoDigitsToText(digits)
   if (!digits[2]) return twoDigits
   if (!twoDigits) return oneDigit[digits[2]] + ' ' + hundred
-  return oneDigit[digits[2]] + ' ' + hundred + useAnd ? ' ' : ' and ' + twoDigits
+  return oneDigit[digits[2]] + ' ' + hundred + (useAnd ? ' and ' : ' ') + twoDigits
 }
 const numberToText = (n, useAnd=false) => {
   if (n == 0 || n == '0') return zero
