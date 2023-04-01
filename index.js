@@ -69,23 +69,23 @@ const twoDigitsToText = digits => {
   if (!tensD) return onesD
   return tensD + '-' + onesD
 }
-const threeDigitsToText = digits => {
+const threeDigitsToText = (digits, useAnd) => {
   const twoDigits = twoDigitsToText(digits)
   if (!digits[2]) return twoDigits
   if (!twoDigits) return oneDigit[digits[2]] + ' ' + hundred
-  return oneDigit[digits[2]] + ' ' + hundred + ' ' + twoDigits
+  return oneDigit[digits[2]] + ' ' + hundred + useAnd ? ' ' : ' and ' + twoDigits
 }
-const numberToText = n => {
+const numberToText = (n, useAnd=false) => {
   if (n == 0 || n == '0') return zero
   const digits = numberToDigits(n)
   const chunks = chunkArray(digits, 3).map(a => a.join('').padEnd(3, '0').split('').map(n => parseInt(n)))
-  const words = chunks.map(t => threeDigitsToText(t))
+  const words = chunks.map(t => threeDigitsToText(t, useAnd))
   const final = words.reduce((all, next, index) => {
     let result = all
     if (index != 0) result = ' ' + result
     if (next == '') return result
     const extension = largeNumbers[index]
-    result = next + ' ' + extension + result
+    result = next + ' ' + extension + ',' + result
     return result
   })
   return final
