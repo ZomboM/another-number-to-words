@@ -76,6 +76,7 @@ const threeDigitsToText = digits => {
   return oneDigit[digits[2]] + ' ' + hundred + ' ' + twoDigits
 }
 const numberToText = n => {
+  if (n == 0 || n == '0') return zero
   const digits = numberToDigits(n)
   const chunks = chunkArray(digits, 3).map(a => a.join('').padEnd(3, '0').split('').map(n => parseInt(n)))
   const words = chunks.map(t => threeDigitsToText(t))
